@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+//app.allows us to define a route handler for all HTTP methods (GET, POST, etc.) for the specified path.
+app.all('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 //MountPath: /admin
 app.get('/admin', (req, res) => {
     res.send('Welcome to the Admin endpoint!');
