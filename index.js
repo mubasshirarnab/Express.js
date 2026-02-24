@@ -1,13 +1,21 @@
 const express = require('express');
 const app = express();
+const admin = express();
 const port = 3000;
 
-app.use(express.json());
+app.use('/admin', admin);
 
 // Define a route handler for the root URL ("/")
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+//MountPath: /admin
+app.get('/admin', (req, res) => {
+    res.send('Welcome to the Admin endpoint!');
+});
+
+
 
 // Define a route handler for POST requests to "/data"
 app.post('/data', (req, res) => {
