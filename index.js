@@ -10,6 +10,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+app.disable('case sensitive routing'); // This will make the routing case-insensitive, so "/Admin" and "/admin" will be treated the same.
+
 //app.allows us to define a route handler for all HTTP methods (GET, POST, etc.) for the specified path.
 app.all('/', (req, res) => {
     res.send('Hello World!');
