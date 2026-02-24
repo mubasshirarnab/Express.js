@@ -10,12 +10,19 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.disable('case sensitive routing'); // This will make the routing case-insensitive, so "/Admin" and "/admin" will be treated the same.
+// app.disable('case sensitive routing'); // This will make the routing case-insensitive, so "/Admin" and "/admin" will be treated the same.
 
-app.enable('strict routing'); // This will make the routing strict, so "/admin" and "/admin/" will be treated as different routes.
+// app.enable('strict routing'); // This will make the routing strict, so "/admin" and "/admin/" will be treated as different routes.
 
-//app.allows us to define a route handler for all HTTP methods (GET, POST, etc.) for the specified path.
-app.all('/', (req, res) => {
+//app.param
+app.param('userId', (req, res, next, userId) => {
+    // This middleware will be executed whenever a route contains the "userId" parameter.
+    console.log(`User ID: ${userId}`);
+    next(); // Call the next middleware or route handler
+});
+
+app.all('/', (req, res) => { 
+    //allows us to define a route handler for all HTTP methods (GET, POST, etc.) for the specified path.
     res.send('Hello World!');
 });
 
